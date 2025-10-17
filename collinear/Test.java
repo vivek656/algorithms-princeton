@@ -52,7 +52,7 @@ public class Test {
         BruteCollinearPoints bcollinear = new BruteCollinearPoints(points);
         StdOut.println("brute collinear points:" + bcollinear.numberOfSegments());
         for (LineSegment segment : bcollinear.segments()) {
-            //  StdOut.println(segment);
+            StdOut.println(segment);
         }
 
         FastCollinearPoints collinear = new FastCollinearPoints(points);
