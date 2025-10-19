@@ -82,8 +82,16 @@ public class Board {
 
     // does this board equal y?
     public boolean equals(Object y) {
-        if (!(y instanceof int[][])) return false;
-        
+        if (y == this) return true;
+        if (y == null || y.getClass() != getClass()) return false;
+        Board other = (Board) y;
+        if (other.dimension != dimension) return false;
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
+                if (tiles[i][j] != other.tiles[i][j]) return false;
+            }
+        }
+        return true;
     }
 
     // all neighboring boards
@@ -111,7 +119,6 @@ public class Board {
         int optimalVertical = (int) Math.ceil((double) value / dimension);
         int optimalHorizontal = value % dimension;
         return (optimalVertical - (i + 1)) + (optimalHorizontal - (j + 1));
-
     }
 
 
