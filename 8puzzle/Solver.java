@@ -18,7 +18,9 @@ public class Solver {
 
     // find a solution to the initial board (using the A* algorithm)
     public Solver(Board initial) {
+        if (initial == null) throw new IllegalArgumentException("Null initial board");
         this.myBoard = initial;
+        solve();
     }
 
     // is the initial board solvable? (see below)
@@ -58,9 +60,14 @@ public class Solver {
         while (!q1.isEmpty()) {
             BoardWithMoves q1Board = q1.delMin();
             BoardWithMoves q2Board = q2.delMin();
-            if (q1Board.board.manhattan() == 0) return;
-            if (q2Board.board.manhattan() == 0) return;
-
+            if (q1Board.board.manhattan() == 0) {
+                solvableFill(q1Board);
+                return;
+            }
+            if (q2Board.board.manhattan() == 0) {
+                notSolvableFill();
+                return;
+            }
             Iterator<Board> q1Neighbours = q1Board.board.neighbors().iterator();
             Iterator<Board> q2Neighbours = q2Board.board.neighbors().iterator();
 
