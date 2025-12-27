@@ -3,3 +3,5 @@
 
 # Ignore .idea folder and all its contents
 .idea/
+algorithms-princeton.iml
+.DS_Store
