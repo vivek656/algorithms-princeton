@@ -1,0 +1,5 @@
+# Ignore all .class files recursively
+*.class
+
+# Ignore .idea folder and all its contents
+.idea/
